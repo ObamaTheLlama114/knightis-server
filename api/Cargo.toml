@@ -1,0 +1,18 @@
+[package]
+name = "knightis-api"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-cors = "0.6.1"
+actix-web = { version = "4.1.0" }
+async-stream = "0.3.3"
+env_logger = "0.9.0"
+juniper = { git = "https://github.com/graphql-rust/juniper" }
+juniper_actix = { git = "https://github.com/graphql-rust/juniper", features = ["juniper_graphql_ws", "subscriptions"] }
+juniper_graphql_ws = { git = "https://github.com/graphql-rust/juniper" }
+redis = { version = "0.21.5", features = ["tokio-native-tls"] }
+sqlx = { version = "0.6.0", features = ["runtime-tokio-native-tls", "postgres"] }
+tokio = "1.20.0"

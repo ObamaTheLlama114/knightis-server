@@ -1,0 +1,27 @@
+FROM rust:latest
+
+EXPOSE 8080
+
+RUN apt-get install pkg-config libssl-dev
+
+RUN mkdir ./src
+
+COPY ./dummy.rs ./src
+
+COPY Cargo.toml .
+
+RUN sed -i 's/main.rs/dummy.rs/' ./Cargo.toml
+
+RUN cargo build
+
+RUN sed -i 's/dummy.rs/main.rs/' ./Cargo.toml
+
+COPY . .
+
+RUN cargo build
+RUN mv ./target/debug/knightis-api ../knightis-api
+
+RUN rm *
+RUN rm -rf *
+
+CMD [ "../knightis-api" ]

@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  api:
+    build: "./api"
+  nginx:
+    image: "nginx:alpine"
+    ports:
+    - "80:80"
+    - "443:443"
+  redis:
+    image: "redis:alpine"
+  postgres:
+    image: "postgres:alpine"
